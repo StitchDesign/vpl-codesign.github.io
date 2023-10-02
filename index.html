@@ -26,15 +26,22 @@
         border-radius: 5px;
         font-size: 18px;
       }
+      /* Style for the Typeform container */
+      .typeform-container {
+        width: 50%;  /* Adjust to your needs */
+        height: 300px;  /* Adjust to your needs */
+        margin: auto;
+      }
     </style>
   </head>
   <body>
     <h1>Stitch Design</h1>
     <a href="mailto:stitchdesignapp@gmail.com" class="contact-button">Contact</a>
-    
-    <!-- Typeform Embed Code -->
-    <div data-tf-widget="vDB3S9KJ" data-tf-opacity="100" data-tf-iframe-props="title=Stitch TestFlight Signup" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
+
+    <!-- Typeform Embed Code inside a container div -->
+    <div class="typeform-container">
+      <div data-tf-widget="vDB3S9KJ" data-tf-opacity="100" data-tf-iframe-props="title=Stitch TestFlight Signup" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
+    </div>
     <script src="//embed.typeform.com/next/embed.js"></script>
-    
   </body>
 </html>
