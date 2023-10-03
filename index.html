@@ -32,12 +32,7 @@
         top: 90%;
         left: 50%;
         transform: translate(-50%, -50%);
-        cursor: pointer;  /* Make the div look clickable */
-      }
-      .typeform-container {
-        width: 50%;  
-        height: 300px; 
-        margin: auto;
+        cursor: pointer;  
       }
       .center-image {
         display: block;
@@ -57,16 +52,12 @@
     <!-- Modified button -->
     <div class="contact-button" onclick="openTypeform()">Join Waitlist</div>
 
-    <!-- Typeform Embed Code inside a container div -->
-    <div class="typeform-container">
-      <div id="typeform-widget" data-tf-widget="vDB3S9KJ" data-tf-opacity="100" data-tf-iframe-props="title=Stitch TestFlight Signup" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
-    </div>
     <script src="//embed.typeform.com/next/embed.js"></script>
 
     <script>
       function openTypeform() {
-        // Assuming the Typeform widget opens when it's clicked
-        document.getElementById('typeform-widget').click();
+        // Open the Typeform directly
+        window.open('YOUR_TYPEFORM_URL', '_blank');
       }
     </script>
   </body>
