@@ -3,7 +3,7 @@
   <head>
     <style>
       body {
-        background-color: #A389ED;
+        background-color: #1F2128; 
         font-family: Arial, sans-serif;
         text-align: center;
         display: flex;
@@ -12,36 +12,62 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        position: relative; 
       }
       h1 {
         font-size: 48px;
         margin-bottom: 20px;
       }
-      a.contact-button {
+      .contact-button {
         display: inline-block;
-        background-color: #ffffff;
-        color: #000000;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
+        background-color: #9C7BF9;
+        color: #ffffff;
+        width: 184px;  
+        height: 42px;  
+        line-height: 42px;  
+        text-align: center; 
+        border-radius: 15px;
         font-size: 18px;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;  /* Make the div look clickable */
       }
-      /* Style for the Typeform container */
       .typeform-container {
-        width: 50%;  /* Adjust to your needs */
-        height: 300px;  /* Adjust to your needs */
+        width: 50%;  
+        height: 300px; 
         margin: auto;
+      }
+      .center-image {
+        display: block;
+        max-width: 100%; 
+        height: auto; 
+        position: absolute;
+        top: calc(50% - 80px); 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: blur(5px); 
       }
     </style>
   </head>
   <body>
-    <h1>Stitch Design</h1>
-    <a href="mailto:stitchdesignapp@gmail.com" class="contact-button">Contact</a>
+    <img src="Nodes.png" alt="Nodes" class="center-image" />
+    
+    <!-- Modified button -->
+    <div class="contact-button" onclick="openTypeform()">Join Waitlist</div>
 
     <!-- Typeform Embed Code inside a container div -->
     <div class="typeform-container">
-      <div data-tf-widget="vDB3S9KJ" data-tf-opacity="100" data-tf-iframe-props="title=Stitch TestFlight Signup" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
+      <div id="typeform-widget" data-tf-widget="vDB3S9KJ" data-tf-opacity="100" data-tf-iframe-props="title=Stitch TestFlight Signup" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:100%;"></div>
     </div>
     <script src="//embed.typeform.com/next/embed.js"></script>
+
+    <script>
+      function openTypeform() {
+        // Assuming the Typeform widget opens when it's clicked
+        document.getElementById('typeform-widget').click();
+      }
+    </script>
   </body>
 </html>
