@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.png" type="image/png"> <!-- Favicon link added -->
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
             background-color: #1F2128;
@@ -15,6 +16,8 @@
             height: 100vh;
             margin: 0;
             position: relative;
+            overflow: hidden; /* prevent default scrolling */
+            overscroll-behavior-y: contain; /* allow rubberband effect without actual scrolling */
         }
         h1 {
             font-size: 48px;
@@ -79,17 +82,18 @@
         /* Media Query for Mobile Devices */
         @media screen and (max-width: 768px) {
             .contact-button {
-                width: 200px;
-                height: 55px;
-                line-height: 55px;
-                font-size: 21px;
+                width: 150px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 18px;
                 top: 75%;
             }
         }
     </style>
 </head>
+
 <body>
-    <img src="Nodes.png" alt="Nodes" class="center-image"/>
+    <img src="Nodes.png" alt="Nodes" class="center-image" />
     <!-- Button -->
     <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
     <!-- Modal for Google Form -->
@@ -108,4 +112,5 @@
         }
     </script>
 </body>
+
 </html>
