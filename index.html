@@ -14,15 +14,20 @@
     <!-- End of Open Graph tags -->
 
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background-color: #1F2128;
             font-family: Arial, sans-serif;
             text-align: center;
-            height: calc(var(--vh, 1vh) * 100);
-            margin: 0;
-            position: relative;
             overflow: auto;
-            transition: overflow 0.3s ease; /* optional, smoothens the transition */
         }
 
         /* Hide scrollbar for all elements */
@@ -44,6 +49,7 @@
         }
 
         .contact-button {
+            margin-top: 2rem;
             display: inline-block;
             background-color: #9C7BF9;
             color: #ffffff;
@@ -53,10 +59,6 @@
             text-align: center;
             border-radius: 15px;
             font-size: 21px;
-            position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             cursor: pointer;
         }
 
@@ -64,10 +66,7 @@
             display: block;
             max-width: 100%;
             height: auto;
-            position: absolute;
-            top: calc(50% - 80px);
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin-bottom: 2rem;
             filter: blur(5px);
         }
 
@@ -115,14 +114,13 @@
                 height: 50px;
                 line-height: 50px;
                 font-size: 18px;
-                top: 75%;
             }
         }
 
         /* Media Query for Desktop Devices */
         @media screen and (min-width: 769px) {
             .contact-button {
-                top: 85%;
+                margin-top: 4rem;
             }
         }
     </style>
@@ -144,8 +142,8 @@
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
         window.addEventListener('resize', () => {
-          let vh = window.innerHeight * 0.01;
-          document.documentElement.style.setProperty('--vh', `${vh}px`);
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
 
         function openGoogleForm() {
