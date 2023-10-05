@@ -13,7 +13,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 101vh; /* Set height to trigger rubberband effect */
+            height: 101vh;
             margin: 0;
             position: relative;
             overflow: hidden; 
@@ -91,6 +91,11 @@
             cursor: pointer;
         }
 
+        #contentContainer {
+            transition: transform 0.3s ease-out; /* The rubber band effect */
+            will-change: transform; /* Optimization */
+        }
+
         /* Media Query for Mobile Devices */
         @media screen and (max-width: 768px) {
             .contact-button {
@@ -105,21 +110,23 @@
         /* New Media Query for Desktop Devices */
         @media screen and (min-width: 769px) {
             .contact-button {
-                top: 85%;  /* Adjust this value as per your design needs */
+                top: 80%;  /* Adjust this value as per your design needs */
             }
         }
     </style>
 </head>
 
 <body>
-    <img src="Nodes.png" alt="Nodes" class="center-image" />
-    <!-- Button -->
-    <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-    <!-- Modal for Google Form -->
-    <div id="googleFormModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeGoogleForm()">&times;</span>
-            <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+    <div id="contentContainer">
+        <img src="Nodes.png" alt="Nodes" class="center-image" />
+        <!-- Button -->
+        <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
+        <!-- Modal for Google Form -->
+        <div id="googleFormModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGoogleForm()">&times;</span>
+                <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
     <script>
@@ -129,6 +136,26 @@
         function closeGoogleForm() {
             document.getElementById('googleFormModal').style.display = 'none';
         }
+        let accumulatedDelta = 0;
+        const maxDelta = 150; // Adjust based on desired rubber band limit
+
+        window.addEventListener('wheel', (e) => {
+            accumulatedDelta += e.deltaY;
+
+            if (accumulatedDelta > maxDelta) {
+                accumulatedDelta = maxDelta;
+            } else if (accumulatedDelta < -maxDelta) {
+                accumulatedDelta = -maxDelta;
+            }
+
+            document.getElementById('contentContainer').style.transform = `translateY(${accumulatedDelta * 0.1}px)`;
+            
+            // Reset after a delay
+            setTimeout(() => {
+                accumulatedDelta = 0;
+                document.getElementById('contentContainer').style.transform = 'translateY(0)';
+            }, 300);
+        }, { passive: false });
     </script>
 </body>
 
