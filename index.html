@@ -73,30 +73,36 @@
             font-size: 24px;
             cursor: pointer;
         }
+        
+        /* Media Query for Mobile Devices */
+        @media screen and (max-width: 768px) {
+            .contact-button {
+                width: 220px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
-<img src="Nodes.png" alt="Nodes" class="center-image"/>
-
-<!-- Button -->
-<div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-
-<!-- Modal for Google Form -->
-<div id="googleFormModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeGoogleForm()">&times;</span>
-        <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+    <img src="Nodes.png" alt="Nodes" class="center-image"/>
+    <!-- Button -->
+    <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
+    <!-- Modal for Google Form -->
+    <div id="googleFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGoogleForm()">&times;</span>
+            <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
     </div>
-</div>
-
-<script>
-    function openGoogleForm() {
-        document.getElementById('googleFormModal').style.display = 'block';
-    }
-
-    function closeGoogleForm() {
-        document.getElementById('googleFormModal').style.display = 'none';
-    }
-</script>
+    <script>
+        function openGoogleForm() {
+            document.getElementById('googleFormModal').style.display = 'block';
+        }
+        function closeGoogleForm() {
+            document.getElementById('googleFormModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
