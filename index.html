@@ -18,7 +18,7 @@
             background-color: #1F2128;
             font-family: Arial, sans-serif;
             text-align: center;
-            height: 101vh;  /* Slight height adjustment for rubber-banding */
+            height: calc(var(--vh, 1vh) * 100);
             margin: 0;
             position: relative;
             overflow: auto;
@@ -92,6 +92,11 @@
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
+            ::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+            scrollbar-width: none;
         }
 
         .close {
@@ -113,10 +118,10 @@
             }
         }
 
-        /* New Media Query for Desktop Devices */
+        /* Media Query for Desktop Devices */
         @media screen and (min-width: 769px) {
             .contact-button {
-                top: 85%;  /* Adjust this value as per your design needs */
+                top: 85%;
             }
         }
     </style>
@@ -134,11 +139,22 @@
         </div>
     </div>
     <script>
+        // Set the viewport height dynamically to ensure it fits the visible area
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        window.addEventListener('resize', () => {
+          let vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+
         function openGoogleForm() {
             document.getElementById('googleFormModal').style.display = 'block';
+            document.body.style.position = 'fixed';
         }
+
         function closeGoogleForm() {
             document.getElementById('googleFormModal').style.display = 'none';
+            document.body.style.position = '';
         }
     </script>
 </body>
