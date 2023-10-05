@@ -13,16 +13,24 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 101vh; /* Set height to trigger rubberband effect */
             margin: 0;
             position: relative;
-            overflow: hidden; /* prevent default scrolling */
-            overscroll-behavior-y: contain; /* allow rubberband effect without actual scrolling */
+            overflow: hidden; 
         }
+
+        body::after {
+            content: "";
+            display: block;
+            height: 1px;
+            visibility: hidden;
+        }
+
         h1 {
             font-size: 48px;
             margin-bottom: 20px;
         }
+
         .contact-button {
             display: inline-block;
             background-color: #9C7BF9;
@@ -39,6 +47,7 @@
             transform: translate(-50%, -50%);
             cursor: pointer;
         }
+
         .center-image {
             display: block;
             max-width: 100%;
@@ -49,6 +58,7 @@
             transform: translate(-50%, -50%);
             filter: blur(5px);
         }
+
         /* Modal styles */
         .modal {
             display: none;
@@ -60,6 +70,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
         }
+
         .modal-content {
             position: absolute;
             top: 10%;
@@ -71,6 +82,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
         }
+
         .close {
             position: absolute;
             right: 20px;
