@@ -17,7 +17,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Prevent any unexpected scrolling on the body directly */
+            overflow: hidden;
         }
 
         #contentContainer {
@@ -26,16 +26,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            overflow-y: scroll; /* Allows scrolling */
+            overflow-y: scroll;
             -webkit-overflow-scrolling: touch; /* Rubber-band effect on iOS */
         }
 
-        /* Hide scrollbar globally */
-        ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
+        /* Hide scrollbars */
+        #contentContainer::-webkit-scrollbar {
+            display: none;
         }
-        scrollbar-width: none;
 
         h1 {
             font-size: 48px;
@@ -70,7 +68,6 @@
             filter: blur(5px);
         }
 
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -102,7 +99,6 @@
             cursor: pointer;
         }
 
-        /* Media Query for Mobile Devices */
         @media screen and (max-width: 768px) {
             .contact-button {
                 width: 150px;
@@ -113,10 +109,9 @@
             }
         }
 
-        /* New Media Query for Desktop Devices */
         @media screen and (min-width: 769px) {
             .contact-button {
-                top: 85%;  /* Adjust this value as per your design needs */
+                top: 85%;
             }
         }
     </style>
@@ -125,9 +120,7 @@
 <body>
     <div id="contentContainer">
         <img src="Nodes.png" alt="Nodes" class="center-image" />
-        <!-- Button -->
         <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-        <!-- Modal for Google Form -->
         <div id="googleFormModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeGoogleForm()">&times;</span>
