@@ -18,21 +18,16 @@
             background-color: #1F2128;
             font-family: Arial, sans-serif;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 101vh;
+            height: 100vh;
             margin: 0;
             position: relative;
-            overflow: auto;  /* Updated from hidden to auto */
+            overflow: hidden;
         }
 
-        body::after {
-            content: "";
-            display: block;
-            height: 1px;
-            visibility: hidden;
+        .content-wrapper {
+            height: 100%;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;  /* Rubber-band effect on iOS */
         }
 
         h1 {
@@ -121,24 +116,26 @@
 </head>
 
 <body>
-    <img src="Nodes.png" alt="Nodes" class="center-image" />
-    <!-- Button -->
-    <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-    <!-- Modal for Google Form -->
-    <div id="googleFormModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeGoogleForm()">&times;</span>
-            <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+    <div class="content-wrapper">
+        <img src="Nodes.png" alt="Nodes" class="center-image" />
+        <!-- Button -->
+        <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
+        <!-- Modal for Google Form -->
+        <div id="googleFormModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGoogleForm()">&times;</span>
+                <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
         </div>
+        <script>
+            function openGoogleForm() {
+                document.getElementById('googleFormModal').style.display = 'block';
+            }
+            function closeGoogleForm() {
+                document.getElementById('googleFormModal').style.display = 'none';
+            }
+        </script>
     </div>
-    <script>
-        function openGoogleForm() {
-            document.getElementById('googleFormModal').style.display = 'block';
-        }
-        function closeGoogleForm() {
-            document.getElementById('googleFormModal').style.display = 'none';
-        }
-    </script>
 </body>
 
 </html>
