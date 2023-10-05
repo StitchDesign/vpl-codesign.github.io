@@ -18,27 +18,24 @@
             background-color: #1F2128;
             font-family: Arial, sans-serif;
             text-align: center;
-            height: 100vh;
+            height: 101vh;  /* Slight height adjustment for rubber-banding */
             margin: 0;
             position: relative;
-            overflow: hidden;
+            overflow: auto;
         }
 
-        .content-wrapper {
-            height: 100%;
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch;  /* Rubber-band effect on iOS */
-
-            /* Hide scrollbar for Chrome, Safari and Opera */
-            ::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-            }
-
-            /* Hide scrollbar for Firefox */
-            scrollbar-width: none;
-            -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+        /* Hide scrollbar for all elements */
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
         }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for Firefox */
+        scrollbar-width: none;
+        -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
 
         h1 {
             font-size: 48px;
@@ -126,25 +123,24 @@
 </head>
 
 <body>
-    <div class="content-wrapper">
-        <img src="Nodes.png" alt="Nodes" class="center-image" />
-        <!-- Button -->
-        <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-        <!-- Modal for Google Form -->
-        <div id="googleFormModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeGoogleForm()">&times;</span>
-                <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
-            </div>
+    <img src="Nodes.png" alt="Nodes" class="center-image" />
+    <!-- Button -->
+    <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
+    <!-- Modal for Google Form -->
+    <div id="googleFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGoogleForm()">&times;</span>
+            <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
         </div>
-        <script>
-            function openGoogleForm() {
-                document.getElementById('googleFormModal').style.display = 'block';
-            }
-            function closeGoogleForm() {
-                document.getElementById('googleFormModal').style.display = 'none';
-            }
-        </script>
     </div>
+    <script>
+        function openGoogleForm() {
+            document.getElementById('googleFormModal').style.display = 'block';
+        }
+        function closeGoogleForm() {
+            document.getElementById('googleFormModal').style.display = 'none';
+        }
+    </script>
 </body>
 
+</html>
