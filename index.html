@@ -6,27 +6,24 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
-            height: 101vh; 
-            overflow: auto;
-            position: relative;
-        }
-
-        #content {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            overflow: hidden;
-            z-index: 1;
             background-color: #1F2128;
             font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 101vh; /* Set height to trigger rubberband effect */
+            margin: 0;
+            position: relative;
+            overflow: hidden; 
         }
 
-        #fake-scroll {
-            height: 102vh;
-            pointer-events: none;
-            z-index: 0;
+        body::after {
+            content: "";
+            display: block;
+            height: 1px;
+            visibility: hidden;
         }
 
         h1 {
@@ -35,6 +32,7 @@
         }
 
         .contact-button {
+            display: inline-block;
             background-color: #9C7BF9;
             color: #ffffff;
             width: 200px;
@@ -51,6 +49,7 @@
         }
 
         .center-image {
+            display: block;
             max-width: 100%;
             height: auto;
             position: absolute;
@@ -60,6 +59,7 @@
             filter: blur(5px);
         }
 
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -91,6 +91,7 @@
             cursor: pointer;
         }
 
+        /* Media Query for Mobile Devices */
         @media screen and (max-width: 768px) {
             .contact-button {
                 width: 150px;
@@ -104,43 +105,23 @@
 </head>
 
 <body>
-    <div id="content">
-        <img src="Nodes.png" alt="Nodes" class="center-image" />
-        <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-        <div id="googleFormModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeGoogleForm()">&times;</span>
-                <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
-            </div>
+    <img src="Nodes.png" alt="Nodes" class="center-image" />
+    <!-- Button -->
+    <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
+    <!-- Modal for Google Form -->
+    <div id="googleFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGoogleForm()">&times;</span>
+            <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
         </div>
     </div>
-    <div id="fake-scroll"></div>
     <script>
         function openGoogleForm() {
             document.getElementById('googleFormModal').style.display = 'block';
         }
-
         function closeGoogleForm() {
             document.getElementById('googleFormModal').style.display = 'none';
         }
-
-        let startY;
-        document.addEventListener('touchstart', function(e) {
-            startY = e.touches[0].clientY;
-        });
-
-        document.addEventListener('touchmove', function(e) {
-            let touch = e.touches[0];
-            let change = startY - touch.clientY;
-
-            if (document.body.scrollTop === 0 && change < 0) {
-                e.preventDefault();
-            }
-
-            if ((document.body.scrollHeight - document.body.scrollTop) === window.innerHeight && change > 0) {
-                e.preventDefault();
-            }
-        });
     </script>
 </body>
 
