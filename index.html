@@ -3,13 +3,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 
     <!-- Open Graph tags -->
     <meta property="og:title" content="Stitch">
     <meta property="og:description" content="Stitch Design.">
     <meta property="og:image" content="https://stitchdesign.app/BlurredNodes.png">
-    <meta property="og:url" content="https:stitchdesign.app">
+    <meta property="og:url" content="https://stitchdesign.app">
     <meta property="og:type" content="website">
     <!-- End of Open Graph tags -->
 
@@ -30,7 +33,6 @@
             overflow: auto;
         }
 
-        /* Hide scrollbar for all elements */
         ::-webkit-scrollbar {
             width: 0;
             height: 0;
@@ -39,9 +41,8 @@
             display: none;
         }
 
-        /* Hide scrollbar for Firefox */
         scrollbar-width: none;
-        -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+        -ms-overflow-style: none;
 
         h1 {
             font-size: 48px;
@@ -70,7 +71,6 @@
             filter: blur(5px);
         }
 
-        /* Modal styles */
         .modal {
             top: 0;
             bottom: 0;
@@ -107,7 +107,6 @@
             cursor: pointer;
         }
 
-        /* Media Query for Mobile Devices */
         @media screen and (max-width: 768px) {
             .contact-button {
                 width: 150px;
@@ -117,10 +116,9 @@
             }
         }
 
-        /* Media Query for Desktop Devices */
         @media screen and (min-width: 769px) {
             .contact-button {
-                margin-top: 10rem;  /* Increased margin for desktop */
+                margin-top: 10rem;
             }
         }
     </style>
@@ -128,17 +126,16 @@
 
 <body>
     <img src="Nodes.png" alt="Nodes" class="center-image" />
-    <!-- Button -->
     <div class="contact-button" onclick="openGoogleForm()">Join Waitlist</div>
-    <!-- Modal for Google Form -->
+    
     <div id="googleFormModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeGoogleForm()">&times;</span>
             <iframe src="https://forms.gle/sY2sJEVwawsUDk9F6" width="100%" height="100%" frameborder="0"></iframe>
         </div>
     </div>
+
     <script>
-        // Set the viewport height dynamically to ensure it fits the visible area
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
         window.addEventListener('resize', () => {
